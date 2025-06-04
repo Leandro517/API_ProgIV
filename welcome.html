@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Boas-Vindas</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .button-container img {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="welcome-container">
+    <h1>Seja bem-vindo(a), <span id="user-email"></span>!</h1>
+    <p>Seu token expira em <span id="token-expiry"></span>.</p>
+
+    <div class="button-container">
+      <a href="index.html" title="Voltar para a página inicial">
+        <img src="img/back-button.png" alt="Voltar" />
+      </a>
+    </div>
+  </div>
+
+<script>
+  const userEmail = localStorage.getItem('userEmail');
+  const tokenExpiry = localStorage.getItem('tokenExpiry');
+
+  document.getElementById('user-email').innerText = userEmail || 'Usuário';
+
+  if (tokenExpiry) {
+    const expiryDate = new Date(tokenExpiry);
+    const now = new Date();
+    const diffMs = expiryDate - now;
+
+    if (diffMs > 0) {
+      const diffMin = Math.floor(diffMs / 60000);
+      const diffSec = Math.floor((diffMs % 60000) / 1000);
+
+      const options = {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      };
+
+      const formattedDate = expiryDate.toLocaleString('pt-BR', options);
+      document.getElementById('token-expiry').innerText =
+        `${formattedDate} (em ${diffMin} minutos e ${diffSec} segundos)`;
+    } else {
+      document.getElementById('token-expiry').innerText = 'expirado';
+    }
+  } else {
+    document.getElementById('token-expiry').innerText = 'não informado';
+  }
+</script>
+
+</body>
+</html>

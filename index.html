@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Cadastro</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://kit.fontawesome.com/2ca71d1b50.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="card-container">
+    <div class="card" id="card">
+      
+      <!-- Login (Frente) -->
+      <div class="face front">
+        <h2>Entrar</h2>
+        <form>
+          <label>
+            <i class="fas fa-envelope"></i>
+            <input type="email" placeholder="E-mail" required>
+          </label>
+          <label>
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Senha" required>
+          </label>
+          <button type="submit">Acessar</button>
+        </form>
+        <p>Ainda não tem conta?</p>
+        <button id="toRegister">Cadastre-se</button>
+      </div>
+
+    <!-- Cadastro (Verso) -->
+    <div class="face back">
+      <h2>Cadastro</h2>
+      <form>
+        <label>
+          <i class="fas fa-envelope"></i>
+          <input type="email" placeholder="E-mail" required>
+        </label>
+        <label>
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Senha" required>
+        </label>
+        <label>
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Confirmar senha" required>
+        </label>
+        <button type="submit">Cadastrar</button>
+      </form>
+      <p>Já tem conta?</p>
+      <button id="toLogin">Entrar</button>
+    </div>
+
+    </div>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>
